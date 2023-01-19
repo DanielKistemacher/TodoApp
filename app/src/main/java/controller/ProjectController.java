@@ -31,7 +31,7 @@ public class ProjectController {
             statement.setDate(3, new Date(projects.getCreatedAt().getTime()));
             statement.setDate(4, new Date(projects.getUpdatedAt().getTime()));
             statement.execute();
-        } catch (Exception ex){
+        } catch (SQLException ex){
             throw new RuntimeException("Erro ao salvar o projeto" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement);
@@ -62,7 +62,7 @@ public class ProjectController {
             statement.setInt(5, project.getId());
             //Executando a query
             statement.execute();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar o projeto" + ex.getMessage(), ex);
         }
     }
@@ -82,7 +82,7 @@ public class ProjectController {
             statement.setInt(1, projectId);
             //Executando a query
             statement.execute();
-        } catch (Exception ex){
+        } catch (SQLException ex){
             throw new RuntimeException("Erro ao deletar o projeto" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement);
@@ -91,13 +91,13 @@ public class ProjectController {
     
     public List<Project> getAll(int idProject){
         
-        String sql = "SELECT * FROM projects WHERE idProject = ?";
+        String sql = "SELECT * FROM projects";
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
         
         //Lista de tarefas que será devolvida quando a chamada do método acontecer
-        List<Project> tasks = new ArrayList<Project>();
+        List<Project> tasks = new ArrayList<>();
         
         try{
             //Estabelecendo a conexão com o banco de dados
@@ -120,8 +120,8 @@ public class ProjectController {
                 
                 tasks.add(project);
             }
-        } catch (Exception ex){
-            throw new RuntimeException("Erro ao inserir o projeto" + ex.getMessage(), ex);
+        } catch (SQLException ex){
+            throw new RuntimeException("Erro ao buscar os projetos" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement, resultSet);
         }

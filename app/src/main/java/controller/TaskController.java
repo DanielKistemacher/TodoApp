@@ -40,7 +40,7 @@ public class TaskController {
             statement.setDate(7, new Date(task.getCreatedAt().getTime()));
             statement.setDate(8, new Date(task.getUpdatedAt().getTime()));
             statement.execute();
-        } catch (Exception ex){
+        } catch (SQLException ex){
             throw new RuntimeException("Erro ao salvar a tarefa" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement);
@@ -79,7 +79,7 @@ public class TaskController {
             statement.setInt(9, task.getId());
             //Executando a query
             statement.execute();
-        } catch (Exception ex) {
+        } catch (SQLException ex) {
             throw new RuntimeException("Erro ao atualizar a tarefa" + ex.getMessage(), ex);
         }
     }
@@ -99,7 +99,7 @@ public class TaskController {
             statement.setInt(1, taskId);
             //Executando a query
             statement.execute();
-        } catch (Exception ex){
+        } catch (SQLException ex){
             throw new RuntimeException("Erro ao deletar a tarefa" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement);
@@ -114,7 +114,7 @@ public class TaskController {
         ResultSet resultSet = null;
         
         //Lista de tarefas que será devolvida quando a chamada do método acontecer
-        List<Task> tasks = new ArrayList<Task>();
+        List<Task> tasks = new ArrayList<>();
         
         try{
             //Estabelecendo a conexão com o banco de dados
@@ -141,8 +141,8 @@ public class TaskController {
                 
                 tasks.add(task);
             }
-        } catch (Exception ex){
-            throw new RuntimeException("Erro ao inserir a tarefa" + ex.getMessage(), ex);
+        } catch (SQLException ex){
+            throw new RuntimeException("Erro ao buscar a tarefa" + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement, resultSet);
         }
