@@ -14,6 +14,7 @@ import model.Project;
  */
 public class ProjectDialogScreen extends javax.swing.JDialog {
 
+    //Variável global (objeto)
     ProjectController controller;
     
     
@@ -147,16 +148,20 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabelToolBarSaveMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelToolBarSaveMouseClicked
-        //Criando o objeto e salvando as informações dos campos no objeto
-        Project project = new Project();
-        project.setName(jTextFieldName.getText());
-        project.setDescription(jTextAreaDescription.getText());
-        
-        //Salvando no banco de dados
-        controller.save(project);
-        
-        //Confirmação do salvamento
-        JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso!");
+        try{
+            //Criando o objeto e salvando as informações dos campos no objeto
+            Project project = new Project();
+            project.setName(jTextFieldName.getText());
+            project.setDescription(jTextAreaDescription.getText());
+
+            //Salvando no banco de dados
+            controller.save(project);
+
+            //Confirmação do salvamento
+            JOptionPane.showMessageDialog(rootPane, "Projeto salvo com sucesso!");
+        } catch(Exception e){
+            JOptionPane.showMessageDialog(rootPane, e.getMessage());
+        };
         
         //Fechando a janela
         this.dispose();
@@ -173,7 +178,7 @@ public class ProjectDialogScreen extends javax.swing.JDialog {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Java swing".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }

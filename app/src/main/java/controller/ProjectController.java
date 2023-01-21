@@ -12,10 +12,10 @@ import util.ConnectionFactory;
 
 public class ProjectController {
     public void save(Project projects){
-        String sql = "INSERT INTO projects (name"
+        String sql = "INSERT INTO projects (name,"
                 + "description,"
                 + "createdAt,"
-                + "updatedAt) VALUES(?, ?, ?, ?, ?)";
+                + "updatedAt) VALUES(?, ?, ?, ?)";
         
         Connection connection = null;
         PreparedStatement statement = null;
@@ -32,7 +32,7 @@ public class ProjectController {
             statement.setDate(4, new Date(projects.getUpdatedAt().getTime()));
             statement.execute();
         } catch (SQLException ex){
-            throw new RuntimeException("Erro ao salvar o projeto" + ex.getMessage(), ex);
+            throw new RuntimeException("Erro ao salvar o projeto. " + ex.getMessage(), ex);
         } finally {
             ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement);
         }
