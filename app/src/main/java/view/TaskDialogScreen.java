@@ -129,7 +129,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
 
         jLabelDeadline.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         jLabelDeadline.setForeground(new java.awt.Color(0, 0, 0));
-        jLabelDeadline.setText("Prazo");
+        jLabelDeadline.setText("Prazo (dd/mm/aaaa)");
 
         jFormattedTextFieldDeadline.setBackground(new java.awt.Color(255, 255, 255));
         jFormattedTextFieldDeadline.setForeground(new java.awt.Color(51, 51, 51));
@@ -199,7 +199,7 @@ public class TaskDialogScreen extends javax.swing.JDialog {
         try{
             Task task = new Task();
             
-            //task.setIdProject(project.getId());
+            task.setIdProject(project.getId());
             
             task.setName(jTextFieldName.getText());
             task.setDescription(jTextAreaDescription.getText());
