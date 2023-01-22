@@ -21,7 +21,6 @@
     -> Listagem dos projetos.<br>
     -> Listagem das tarefas.<br>
         -> Informação das tarefas com: nome, descrição, prazo e status.<br>
-
 <br>
 
 ## ✉ Contato
