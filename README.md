@@ -1,4 +1,4 @@
-# Moto GP
+# Todo App - Gerenciamento de projetos e tarefas
 
 ![preview_readme](./preview.png)
 > Todo App - Aplicação para cadastro de projetos e tarefas.
