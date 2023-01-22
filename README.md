@@ -24,5 +24,5 @@
 <br>
 
 ## ✉ Contato
-E-mail: danielkistemacher@gmail.com
+E-mail: danielkistemacher@gmail.com <br>
 LinkedIn: https://www.linkedin.com/in/daniel-kistemacher-da-silva-525422219/
