@@ -15,12 +15,12 @@
 
 ## ⚠ Informações do projeto
 
-- Tela inicial contendo as opções para:
-    -> Cadastro de projetos.
-    -> Cadastro de tarefas, vinculadas a um projeto.
-    -> Listagem dos projetos.
-    -> Listagem das tarefas.
-        -> Informação das tarefas com: nome, descrição, prazo e status.
+- Tela inicial contendo as opções para: <br>
+    -> Cadastro de projetos.<br>
+    -> Cadastro de tarefas, vinculadas a um projeto.<br>
+    -> Listagem dos projetos.<br>
+    -> Listagem das tarefas.<br>
+        -> Informação das tarefas com: nome, descrição, prazo e status.<br>
 
 <br>
 
