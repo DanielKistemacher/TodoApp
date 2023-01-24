@@ -92,40 +92,53 @@ public class ProjectController {
     public List<Project> getAll(int idProject){
         
         String sql = "SELECT * FROM projects";
+        
+        //Lista de tarefas que será devolvida quando a chamada do método acontecer
+        List<Project> projects = new ArrayList<>();
+        
         Connection connection = null;
         PreparedStatement statement = null;
         ResultSet resultSet = null;
-        
-        //Lista de tarefas que será devolvida quando a chamada do método acontecer
-        List<Project> tasks = new ArrayList<>();
         
         try{
             //Estabelecendo a conexão com o banco de dados
             connection = ConnectionFactory.getConnection();
             //Preparando a query
             statement = connection.prepareStatement (sql);
-            //Setando os valores que corresponde ao filtro da busca
-            statement.setInt(1, idProject);
             //Valor retornado pelo query
             resultSet = statement.executeQuery();
             
             //Enquanto houverem valores a serem percorridos no meu resultSet
             while(resultSet.next()){
+                
                 Project project = new Project();
+                
                 project.setId(resultSet.getInt("id"));
                 project.setName(resultSet.getString("name"));
                 project.setDescription(resultSet.getString("description"));
                 project.setCreatedAt(resultSet.getDate("createdAt"));
                 project.setUpdatedAt(resultSet.getDate("updatedAt"));
                 
-                tasks.add(project);
+                projects.add(project);
             }
         } catch (SQLException ex){
             throw new RuntimeException("Erro ao buscar os projetos" + ex.getMessage(), ex);
         } finally {
-            ConnectionFactory.closeConnection((com.mysql.jdbc.Connection) connection, statement, resultSet);
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (statement != null) {
+                    statement.close();
+                }
+                if (connection != null) {
+                    connection.close();
+                }
+            } catch (SQLException ex) {
+                throw new RuntimeException("Erro ao fechar a conexão", ex);
+            }
         }
         //Lista de tarefas que foi criada e carregada do banco de dados
-        return tasks;
+        return projects;
     }
 }
