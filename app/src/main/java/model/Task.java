@@ -99,14 +99,16 @@ public class Task {
         return updatedAt;
     }
     
-    /* ANTIGO
+    
+    public void setUpdatedAt(Date updatedAt) {
+        this.updatedAt = updatedAt;
+    }
+        
+    /* NOVO
     public void setUpdatedAt(Date updatedAt) {
         this.updatedAt = updatedAt;
     }
     */
-    public void setUpdatedAt(Date updatedAt) {
-        this.updatedAt = updatedAt;
-    }
 
     @Override
     public String toString() {
