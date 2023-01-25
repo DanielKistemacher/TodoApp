@@ -13,7 +13,7 @@ import util.ConnectionFactory;
 public class TaskController {
     
     public void save(Task task){
-        String sql = "INSERT INTO tasks (idProject"
+        String sql = "INSERT INTO tasks (idProject,"
                 + "name,"
                 + "description,"
                 + "completed,"
@@ -48,16 +48,7 @@ public class TaskController {
     }
     
     public void update(Task task){
-        String sql = "UPDATE tasks SET "
-                + "idProject = ?, "
-                + "name = ?, "
-                + "description = ?, "
-                + "notes = ?, "
-                + "completed = ?, "
-                + "deadline = ?, "
-                + "createdAt = ?, "
-                + "updatedAt = ?, "
-                + "WHERE id = ?";
+        String sql = "UPDATE tasks SET idProject = ?, name = ?, description = ?, notes = ?, completed = ?, deadline = ?, createdAt = ?, updatedAt = ? WHERE id = ?";
         
         Connection connection = null;
         PreparedStatement statement = null;
