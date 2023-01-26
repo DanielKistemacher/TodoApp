@@ -387,8 +387,7 @@ public class MainScreen extends javax.swing.JFrame {
     private void jListProjectsMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jListProjectsMouseClicked
         int projectIndex = jListProjects.getSelectedIndex();
         Project project = (Project) projectsModel.get(projectIndex);
-        loadTasks(project.getId());
-        
+        loadTasks(project.getId()); 
     }//GEN-LAST:event_jListProjectsMouseClicked
 
     /**
@@ -458,10 +457,6 @@ public class MainScreen extends javax.swing.JFrame {
         jTableTasks.getColumnModel().getColumn(2).setCellRenderer(new DeadlineColumnCellRederer());
         jTableTasks.getColumnModel().getColumn(4).setCellRenderer(new ButtonColumnCellRederer("edit"));
         jTableTasks.getColumnModel().getColumn(5).setCellRenderer(new ButtonColumnCellRederer("delete"));
-        
-
-        //Criando um sort automático para as colunas da table (ordenação)
-        //jTableTasks.setAutoCreateRowSorter(true);
     }
     
     public void initDataController(){
